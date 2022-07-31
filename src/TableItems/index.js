@@ -2,9 +2,19 @@ import React from "react";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Typography } from "@mui/material";
+import axios from "axios";
 
 export default function TableItems({ table, dispatch, handlePopUp }) {
   function paymentSuccessful() {
+    console.log("table data ",table.items, table.bill);
+  // {
+  //     "amount" : 600, 
+  //     "items":[{"id": 3, "name": "Pizza", "price": 200, "count": 3}]
+  // }
+    axios.post("http://localhost:4000/storeOrder",{
+      amount: table.bill,
+      items:table.items
+    })
     handlePopUp();
     dispatch({ type: "emptyTable", payload: table.id });
   }
@@ -24,7 +34,7 @@ export default function TableItems({ table, dispatch, handlePopUp }) {
           {table.items.map((item) => {
             return (
               <>
-                <tr>
+                <tr key = {`row-${item.id}`}>
                   <td>{item.name}</td>
                   <td>{item.price}</td>
                   <td>

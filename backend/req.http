@@ -1,0 +1,36 @@
+GET http://localhost:4000
+
+###
+POST http://localhost:4000/storeOrder
+Content-Type: application/json
+
+{
+    "amount" : 600, 
+    "items":[{"id": 3, "name": "Pizza", "price": 200, "count": 3}]
+}
+
+###
+POST http://localhost:4000/createItem
+Content-Type: application/json
+
+{
+    "name" : "burger",
+    "price" : 99
+}
+
+###
+GET http://localhost:4000/getItems
+
+
+###
+GET http://localhost:4000/getOrders
+
+
+###
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email" : "aarthisuram2310@gmail.com",
+    "password" : "aaru"
+}
